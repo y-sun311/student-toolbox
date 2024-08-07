@@ -19,3 +19,8 @@ assignees: ''
 
 ## Images and Resources
 *Add any images or resources demonstrating or relating to the problem.*
+
+## Environment
+*Operating System:*
+*Device:*
+*Browser:*
