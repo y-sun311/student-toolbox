@@ -28,6 +28,7 @@ export default function Assignment(props) {
     const handleBlur = (field, value) => {
         if (field === "name") {
             setName(value);
+            props.onUpdate(props.id, { name: value });
         } else if (value === "" ||
             (!isNaN(value) &&
             parseFloat(value) >= 0 &&
@@ -36,8 +37,10 @@ export default function Assignment(props) {
             if (value === "") value = 0; 
             if (field === "grade") {
               setGrade(value);
+              props.onUpdate(props.id, { grade: value });
             } else if (field === "weight") {
               setWeight(value);
+              props.onUpdate(props.id, { weight: value });
             }
         }
         setEditor(null);
@@ -78,4 +81,5 @@ Assignment.propTypes = {
     grade: PropTypes.string.isRequired,
     weight: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired
   };

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.15",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "eslint": "^8",
-    "eslint-config-next": "14.2.5"
+    "eslint-config-next": "14.2.5",
+    "jest": "^29.7.0"
   }
 }
