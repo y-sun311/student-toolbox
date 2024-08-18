@@ -134,25 +134,22 @@ export default function Course(props) {
         averageAcheived={averageAcheived}
         courseGrade={courseGrade}
       ></CourseHeader>
-
-      {showAssignments && (
-        <div className="courseAssignments">
-          {assignments.map((assignment) => (
-            <Assignment
-              key={assignment.id}
-              id={assignment.id}
-              name={assignment.name}
-              grade={assignment.grade}
-              weight={assignment.weight}
-              onDelete={handleAssignmentDelete}
-              onUpdate={handleAssignmentUpdate}
-            />
-          ))}
-          <button className="newAssignmentBtn" onClick={handleNewAssignment}>
-            New Assignment +
-          </button>
-        </div>
-      )}
+      <div className={showAssignments ? "courseAssignmentsShow" : "courseAssignmentsHide"}>
+        {assignments.map((assignment) => (
+          <Assignment
+            key={assignment.id}
+            id={assignment.id}
+            name={assignment.name}
+            grade={assignment.grade}
+            weight={assignment.weight}
+            onDelete={handleAssignmentDelete}
+            onUpdate={handleAssignmentUpdate}
+          />
+        ))}
+        <button onClick={handleNewAssignment}>
+          New Assignment +
+        </button>
+      </div>
     </div>
   );
 }
