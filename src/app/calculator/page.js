@@ -22,6 +22,9 @@ export default function CalculatorPage() {
 
   const handleNewCourse = () => {
     setCourses([...courses, { id: crypto.getRandomValues(array), courseName }]);
+    setCourseName("");
+    document.getElementById("courseInput").value = "";
+    setIsInputNameEmpty(true);
   };
 
   const handleCourseDelete = (id) => {
