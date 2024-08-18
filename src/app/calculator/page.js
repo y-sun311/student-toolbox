@@ -9,7 +9,8 @@ export default function CalculatorPage() {
   let array = new Uint32Array(1);
 
   const [isInputNameEmpty, setIsInputNameEmpty] = useState(true);
-  const [courses, setCourses] = useState([]); // courses array stores course objects (not course components)
+  // 'courses' array stores course objects (not course components).  Each course object contains the fields: 'id', 'courseName', and 'gradePoint'.
+  const [courses, setCourses] = useState([]);
   const [courseName, setCourseName] = useState();
   const [gpa, setGpa] = useState("X");
 
@@ -28,11 +29,11 @@ export default function CalculatorPage() {
   };
 
   /**
-   * Updates a course in 'courses' gradepoint field. Is finally called in the
-   * useEffect hook of course.jsx.
-   * 
-   * @param {*} id 
-   * @param {*} gradePoint 
+   * Updates the 'gradePoint' field courses in the 'courses' array. This function is passed into 'CourseList' components and
+   * is ultimately called in the useEffect hook of 'Course' components.
+   *
+   * @param {*} id
+   * @param {*} gradePoint
    */
   const handleAverageUpdate = (id, gradePoint) => {
     const updatedCourses = courses.map((course) =>
@@ -41,6 +42,10 @@ export default function CalculatorPage() {
     setCourses(updatedCourses);
   };
 
+  /**
+   * Listens for changes made to the 'courses' aray so that 'gpa' can be set accordingly.
+   *
+   */
   useEffect(() => {
     let newGpa = 0;
     // Since this hook is called whenever the 'courses' array changes, some courses in the array may not have a
