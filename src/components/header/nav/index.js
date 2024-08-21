@@ -22,7 +22,7 @@ export default function Index() {
       animate="enter"
       exit="exit"
       initial="initial"
-      className="menu"  // Using plain class names
+      className="menu"
     >
       <div className="body">
         <div className="nav">

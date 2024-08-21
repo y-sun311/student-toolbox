@@ -17,7 +17,6 @@ import TimetableDeleteModal from "./TimetableDeleteModal";
  * @returns {JSX.Element} The rendered component.
  */
 export default function Timetable({ username }) {
-  // State variables for managing modals and events
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
   const [events, setEvents] = useState([]);
@@ -82,7 +81,6 @@ export default function Timetable({ username }) {
       borderColor: eventInfo.event.borderColor,
     };
 
-    // Send a PATCH request to update the event
     const response = await fetch(`/api/user/${username}/event`, {
       method: "PATCH",
       body: JSON.stringify({
@@ -104,7 +102,6 @@ export default function Timetable({ username }) {
   return (
     <div className={"calendar-main"}>
 
-      {/* Render the FullCalendar component with the necessary plugins */}
       <FullCalendar
         plugins={[timeGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
@@ -124,7 +121,6 @@ export default function Timetable({ username }) {
         height={700}
       />
 
-      {/* Render EventModal if the modalIsOpen state is true */}
       {modalIsOpen && (
         <TimetableEventModal
           isOpen={modalIsOpen}
@@ -134,7 +130,6 @@ export default function Timetable({ username }) {
         />
       )}
 
-      {/* Render DeleteModal if the deleteModalIsOpen state is true */}
       {deleteModalIsOpen && (
         <TimetableDeleteModal
           isOpen={deleteModalIsOpen}
@@ -147,7 +142,6 @@ export default function Timetable({ username }) {
   );
 }
 
-// Define propTypes for the component
 Timetable.propTypes = {
   username: PropTypes.string.isRequired,
 };

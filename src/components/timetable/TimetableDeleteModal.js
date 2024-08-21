@@ -30,7 +30,6 @@ export default function TimetableDeleteModal({
    * @returns {Promise<void>}
    */
   const handleEventDeletion = async () => {
-    // If an event is selected, send a DELETE request to remove it
     if (selectedEvent) {
       const response = await fetch(`/api/user/${username}/event`, {
         method: "DELETE",
@@ -41,7 +40,6 @@ export default function TimetableDeleteModal({
       });
 
       if (response.ok) {
-        // Remove the deleted event from the events list
         setEvents((prevEvents) =>
           prevEvents.filter((event) => event.id !== selectedEvent.id)
         );
@@ -68,7 +66,6 @@ export default function TimetableDeleteModal({
   );
 }
 
-// Define PropTypes for DeleteModal to enforce the types of props passed
 TimetableDeleteModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
@@ -76,7 +73,6 @@ TimetableDeleteModal.propTypes = {
   setEvents: PropTypes.func.isRequired,
 };
 
-// Define default props if necessary
 TimetableDeleteModal.defaultProps = {
   selectedEvent: null,
 };

@@ -1,6 +1,6 @@
 import "./styles/course.css";
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import CourseHeader from "./courseHeader";
 import Assignment from "./assignment";
 
@@ -120,7 +120,6 @@ export default function Course(props) {
     const grade = determineGrade(averageAcheived);
 
     setCourseGrade(grade.letter);
-    // Call the function in /calculator/page.js to add gpa to the course
     props.onAverageUpdate(props.id, grade.gpa);
   }, [averageAcheived]);
 

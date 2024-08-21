@@ -10,7 +10,6 @@ export default function CalculatorPage() {
   let array = new Uint32Array(1);
 
   const [isInputNameEmpty, setIsInputNameEmpty] = useState(true);
-  // 'courses' array stores course objects (not course components).  Each course object contains the fields: 'id', 'courseName', and 'gradePoint'.
   const [courses, setCourses] = useState([]);
   const [courseName, setCourseName] = useState();
   const [gpa, setGpa] = useState("X");
@@ -52,8 +51,6 @@ export default function CalculatorPage() {
    */
   useEffect(() => {
     let newGpa = 0;
-    // Since this hook is called whenever the 'courses' array changes, some courses in the array may not have a
-    // gradePoint. Count tracks the number of courses that do.
     let count = 0;
 
     for (let course in courses) {

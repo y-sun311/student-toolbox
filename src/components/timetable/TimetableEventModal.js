@@ -15,7 +15,6 @@ import { nanoid } from "nanoid";
  */
 export default function TimetableEventModal({ setIsOpen, selectedInfo, setEvents }) {
   const session = useSession();
-  // State to manage the event title and color
   const [title, setTitle] = useState("");
   const [color, setColor] = useState("#3788d8");
   const username = session?.data?.user?.name;
@@ -30,7 +29,7 @@ export default function TimetableEventModal({ setIsOpen, selectedInfo, setEvents
   const handleEventCreation = async () => {
     if (title && selectedInfo) {
       const newEvent = {
-        id: nanoid(), // Generate a unique ID for the event
+        id: nanoid(), // Events need a unique ID
         title,
         start: selectedInfo.startStr,
         end: selectedInfo.endStr,
@@ -38,7 +37,6 @@ export default function TimetableEventModal({ setIsOpen, selectedInfo, setEvents
         borderColor: color,
       };
 
-      // Send a POST request to create the new event
       const response = await fetch(`/api/user/${username}/event`, {
         method: "POST",
         headers: {
@@ -49,7 +47,6 @@ export default function TimetableEventModal({ setIsOpen, selectedInfo, setEvents
 
       if (response.ok) {
         setEvents((prevEvents) => {
-          // Ensure prevEvents is always an array
           return Array.isArray(prevEvents)
             ? [...prevEvents, newEvent]
             : [newEvent];
@@ -86,14 +83,12 @@ export default function TimetableEventModal({ setIsOpen, selectedInfo, setEvents
   );
 }
 
-// Define PropTypes for EventModal to enforce the types of props passed
 TimetableEventModal.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   selectedInfo: PropTypes.object,
   setEvents: PropTypes.func.isRequired,
 };
 
-// Define default props if necessary
 TimetableEventModal.defaultProps = {
   selectedInfo: null,
 };

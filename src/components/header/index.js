@@ -3,7 +3,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Nav from "./nav/index";
-import "./header.css"; // Import the plain CSS file
+import "./header.css";
 
 export default function Index() {
   const [isActive, setIsActive] = useState(false);
@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <>
       <button
-        className="button" // Using a plain class name
+        className="button"
         onClick={() => {
           setIsActive(!isActive);
         }}
