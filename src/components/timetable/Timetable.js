@@ -103,25 +103,6 @@ export default function Timetable({ username }) {
 
   return (
     <div className={"calendar-main"}>
-      {/* Button group for uploading and removing background image */}
-      <div className={"button-group"}>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleBackgroundImageUpload}
-          style={{ display: "none" }}
-          id="background-image-upload"
-        />
-
-        {backgroundImage && (
-          <button
-            onClick={handleRemoveBackgroundImage}
-            className={"remove-button"}
-          >
-            &times;
-          </button>
-        )}
-      </div>
 
       {/* Render the FullCalendar component with the necessary plugins */}
       <FullCalendar
