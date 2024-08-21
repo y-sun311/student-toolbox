@@ -1,4 +1,4 @@
-import "./css/course.css";
+import "./styles/course.css";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types"; // Import PropTypes
 import CourseHeader from "./courseHeader";
@@ -12,7 +12,7 @@ import Assignment from "./assignment";
  * State:
  * - `showAssignments` (Boolean): Determines whether the assignments for the course are visible.
  * - `totalAchieved` (Number): The total percentage achieved for the course.
- * - `averageAchieved` (Number): The average percentage achieved for the course.
+ * - `averageAcheived` (Number): The average percentage achieved for the course.
  * - `courseGrade` (String): The grade of the course, default is "NA".
  * - `assignments` (Array): Array of assignment objects associated with the course. Each assignment contains an 'id' field.
  * @param {*} props 
@@ -40,7 +40,7 @@ export default function Course(props) {
     setAssignments(updatedAssignments);
     calculateTotalPercent(updatedAssignments);
     calculateAveragePercent(updatedAssignments);
-    
+
   };
 
   const handleCourseClick = () => {
@@ -134,7 +134,7 @@ export default function Course(props) {
         averageAcheived={averageAcheived}
         courseGrade={courseGrade}
       ></CourseHeader>
-      <div className={showAssignments ? "courseAssignmentsShow" : "courseAssignmentsHide"}>
+      <div className={showAssignments ? "course-assignments-show" : "course-assignments-hide"}>
         {assignments.map((assignment) => (
           <Assignment
             key={assignment.id}

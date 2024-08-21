@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./style.module.scss";
+import "./styles/timetable.css";
 import { useSession } from "next-auth/react";
 
 /**
@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
  * @param {Function} props.setEvents - Function to update the events list after deletion.
  * @returns {JSX.Element|null} The rendered component or null if the modal is not open.
  */
-export default function DeleteModal({
+export default function TimetableDeleteModal({
   isOpen,
   setIsOpen,
   selectedEvent,
@@ -54,8 +54,8 @@ export default function DeleteModal({
 
   return (
     isOpen && (
-      <div className={styles.modalOverlay}>
-        <div className={styles.modalContent}>
+      <div className="modal-overlay">
+        <div className="modal-content">
           <h2>Delete Event</h2>
           <p>
             Are you sure you want to delete the event '{selectedEvent?.title}'?
@@ -69,7 +69,7 @@ export default function DeleteModal({
 }
 
 // Define PropTypes for DeleteModal to enforce the types of props passed
-DeleteModal.propTypes = {
+TimetableDeleteModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
   selectedEvent: PropTypes.object,
@@ -77,6 +77,6 @@ DeleteModal.propTypes = {
 };
 
 // Define default props if necessary
-DeleteModal.defaultProps = {
+TimetableDeleteModal.defaultProps = {
   selectedEvent: null,
 };

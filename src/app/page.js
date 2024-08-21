@@ -1,5 +1,4 @@
 import { auth } from "@/auth"
-import DatabaseExample from "@/components/dashboard/database-example"
 import Title from "@/components/title"
 
 export default async function Home() {
@@ -10,7 +9,6 @@ export default async function Home() {
       <Title
         text={`👋 Welcome, ${session ? session?.user?.name : "student"}!`}
       />
-      <DatabaseExample />
     </main>
   )
 }
