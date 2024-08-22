@@ -48,6 +48,14 @@ const userSchema = new mongoose.Schema(
         ],
       },
     ],
+    todos: [
+      {
+        id: { type: Number, required: true },
+        title: { type: String, required: true },
+        description: { type: String, required: true },
+        completed: { type: Boolean, required: true },
+      },
+    ],
   },
   {
     methods: {
