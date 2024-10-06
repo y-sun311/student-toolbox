@@ -1,0 +1,17 @@
+.title {
+    font-size: 2rem;
+  }
+  
+  /* Media query for screens 800px or less */
+  @media (max-width: 800px) {
+    .title {
+      font-size: 1.5rem; 
+    }
+  }
+  
+  /* Media query for screens 515px or less */
+  @media (max-width: 515px) {
+    .title {
+      font-size: 1rem; 
+    }
+  }

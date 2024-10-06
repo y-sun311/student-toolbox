@@ -1,6 +1,6 @@
 "use client";
 
-import Title from "@/components/title";
+import Title from "@/components/title/title";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRef } from "react";

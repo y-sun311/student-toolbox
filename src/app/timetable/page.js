@@ -1,6 +1,6 @@
 "use client";
 
-import Title from "@/components/title";
+import Title from "@/components/title/title";
 import { useSession } from "next-auth/react";
 import Timetable from "../../components/timetable/Timetable";
 

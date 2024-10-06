@@ -56,3 +56,51 @@ textarea {
     flex-direction: column;
     gap: 10px;
 }
+
+/* Media query for smaller screens */
+@media (max-width: 800px) {
+    #todo-create-modal {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    #todo-create-modal label {
+        font-size: 1.2rem;
+    }
+
+    #todo-create-modal input,
+    textarea {
+        font-size: 0.9rem;
+    }
+
+    .title-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title-bar h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #todo-create-modal-close-button {
+        /* Ensures the close button stays on the top right of the modal */
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 1rem; 
+        width: 20px; 
+        height: 20px; 
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+ }
+/* Media query for screens 515px or less */
+@media (max-width: 515px) {
+    .title-bar h1 {
+    font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }   
+}
+

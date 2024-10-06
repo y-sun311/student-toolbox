@@ -1,0 +1,13 @@
+todo-create-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 800px) {
+    .todo-create-button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}

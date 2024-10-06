@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import Title from "../title";
+import Title from "../title/title";
 
 export default function Welcome() {
   const session = useSession();

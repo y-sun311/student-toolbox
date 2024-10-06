@@ -1,7 +1,7 @@
 "use client";
 import CourseList from "@/components/calculator/courseList";
 import CalculatorHeader from "@/components/calculator/header";
-import Title from "@/components/title";
+import Title from "@/components/title/title";
 import { nanoid } from "nanoid";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
