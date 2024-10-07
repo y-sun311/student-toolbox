@@ -31,6 +31,18 @@
   width: 300px;
 }
 
+@media (max-width: 450px) {
+  body {
+    margin: 0 7.5% 0 7.5%;
+  }
+  .auth_form {
+    width: 100%;
+  }
+  .auth__form input {
+    width: 90%;
+  }
+}
+
 .auth__form input::placeholder {
   color: #cbd5e1;
 }
