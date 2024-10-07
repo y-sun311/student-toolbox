@@ -11,6 +11,11 @@ export default async function Home() {
       icon: "/icons/calculator.png",
       link: "/calculator",
     },
+      {
+          title: "Campus Map",
+          icon: "/icons/calculator.png",
+          link: "/campus",
+      },
   ];
   return (
     <main>
