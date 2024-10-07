@@ -3,7 +3,6 @@ import Sidebar from "./Sidebar";
 import "./styles/campusMap.css";
 import { useSession } from "next-auth/react";
 
-
 function withSessionHandling(WrappedComponent) {
     return function SessionHandler(props) {
         const session = useSession();
@@ -22,7 +21,7 @@ class CampusMap extends Component {
             selectedLocation: null,
             markerInstance: null,
             directionsRenderer: null,
-            isDirectionsVisible: false,
+            isDirectionsVisible: false, // State to toggle directions view
             username: null,
         };
     }
@@ -30,7 +29,6 @@ class CampusMap extends Component {
     componentDidMount() {
         const { session } = this.props;
 
-        // Get username from session
         const username = session?.data?.user?.name;
         if (username) {
             this.setState({ username });
@@ -55,16 +53,18 @@ class CampusMap extends Component {
         this.setState({ mapInstance: map });
     }
 
-    // Handle location selection: zoom in and place marker
     handleLocationSelect = (coords) => {
-        const { mapInstance, markerInstance } = this.state;
+        const { mapInstance, markerInstance, directionsRenderer } = this.state;
 
-        // Remove the previous marker if it exists
         if (markerInstance) {
             markerInstance.setMap(null);
         }
 
-        // Create a new marker
+
+        if (directionsRenderer) {
+            directionsRenderer.setMap(null);
+        }
+
         const marker = new google.maps.Marker({
             position: coords,
             map: mapInstance,
@@ -77,7 +77,8 @@ class CampusMap extends Component {
         this.setState({
             selectedLocation: coords,
             markerInstance: marker,
-            isDirectionsVisible: false, // Reset to hide directions
+            directionsRenderer: null,
+            isDirectionsVisible: false,
         });
     };
 
@@ -94,12 +95,12 @@ class CampusMap extends Component {
 
                 const directionsService = new google.maps.DirectionsService();
                 const directionsRenderer = new google.maps.DirectionsRenderer();
-                directionsRenderer.setMap(mapInstance); // Set the renderer on the map
+                directionsRenderer.setMap(mapInstance);
 
                 const request = {
                     origin: currentLocation,
                     destination: selectedLocation,
-                    travelMode: "WALKING", // or DRIVING, BICYCLING, etc.
+                    travelMode: "WALKING",
                 };
 
                 directionsService.route(request, (result, status) => {
@@ -116,22 +117,25 @@ class CampusMap extends Component {
         }
     };
 
-    // Handle going back from directions
     handleGoBack = () => {
-        const { directionsRenderer, mapInstance } = this.state;
+        const { directionsRenderer, mapInstance, markerInstance } = this.state;
 
-        // Remove directions from the map
         if (directionsRenderer) {
             directionsRenderer.setMap(null); // Clear the directions
         }
 
-        // Clear the directions renderer from state
+        if (markerInstance) {
+            markerInstance.setMap(null);
+        }
+
+        // Reset state
         this.setState({
             directionsRenderer: null,
-            isDirectionsVisible: false, // Hide the Back button and return to Get Directions state
+            markerInstance: null,
+            isDirectionsVisible: false,
+            selectedLocation: null,
         });
 
-        // Optional: Reset zoom or any other map settings
         mapInstance.setZoom(15);
     };
 
@@ -158,5 +162,6 @@ class CampusMap extends Component {
 }
 
 export default withSessionHandling(CampusMap);
+
 
 
