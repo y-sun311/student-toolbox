@@ -22,6 +22,7 @@ class CampusMap extends Component {
             selectedLocation: null,
             markerInstance: null,
             directionsRenderer: null,
+            isDirectionsVisible: false,
             username: null,
         };
     }
@@ -35,20 +36,20 @@ class CampusMap extends Component {
             this.setState({ username });
         }
 
-        // Load the Google Maps API and initialize the map
+        // Initialize the map
         const script = document.createElement("script");
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCFJwn49QS6TD-tv-EgR1HN9uP1eANTE9E&callback=initMap`;
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&callback=initMap`;
         script.async = true;
         document.head.appendChild(script);
 
         window.initMap = this.initMap.bind(this);
     }
 
-    // Initialize Google Map
+    // Initialize the Google Map
     initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 15,
-            center: { lat: -36.8485, lng: 174.7633 },
+            center: { lat: -36.8485, lng: 174.7633 }, // Default map center
         });
 
         this.setState({ mapInstance: map });
@@ -58,10 +59,12 @@ class CampusMap extends Component {
     handleLocationSelect = (coords) => {
         const { mapInstance, markerInstance } = this.state;
 
+        // Remove the previous marker if it exists
         if (markerInstance) {
             markerInstance.setMap(null);
         }
 
+        // Create a new marker
         const marker = new google.maps.Marker({
             position: coords,
             map: mapInstance,
@@ -71,7 +74,11 @@ class CampusMap extends Component {
         mapInstance.setCenter(coords);
         mapInstance.setZoom(17);
 
-        this.setState({ selectedLocation: coords, markerInstance: marker });
+        this.setState({
+            selectedLocation: coords,
+            markerInstance: marker,
+            isDirectionsVisible: false, // Reset to hide directions
+        });
     };
 
     // Handle getting directions
@@ -92,15 +99,15 @@ class CampusMap extends Component {
                 const request = {
                     origin: currentLocation,
                     destination: selectedLocation,
-                    travelMode: "WALKING",
+                    travelMode: "WALKING", // or DRIVING, BICYCLING, etc.
                 };
 
                 directionsService.route(request, (result, status) => {
                     if (status === google.maps.DirectionsStatus.OK) {
                         directionsRenderer.setDirections(result);
-                        this.setState({ directionsRenderer });
+                        this.setState({ directionsRenderer, isDirectionsVisible: true });
                     } else {
-                        alert("Directions failed" + status);
+                        alert("Directions request failed due to " + status);
                     }
                 });
             });
@@ -109,16 +116,40 @@ class CampusMap extends Component {
         }
     };
 
+    // Handle going back from directions
+    handleGoBack = () => {
+        const { directionsRenderer, mapInstance } = this.state;
+
+        // Remove directions from the map
+        if (directionsRenderer) {
+            directionsRenderer.setMap(null); // Clear the directions
+        }
+
+        // Clear the directions renderer from state
+        this.setState({
+            directionsRenderer: null,
+            isDirectionsVisible: false, // Hide the Back button and return to Get Directions state
+        });
+
+        // Optional: Reset zoom or any other map settings
+        mapInstance.setZoom(15);
+    };
+
     render() {
-        const { selectedLocation } = this.state;
+        const { selectedLocation, isDirectionsVisible } = this.state;
 
         return (
             <div className="campus-map-container">
                 <Sidebar setFocusLocation={this.handleLocationSelect} />
                 <div id="map" className="map"></div>
-                {selectedLocation && (
+                {selectedLocation && !isDirectionsVisible && (
                     <button onClick={this.handleGetDirections} className="directions-button">
                         Get Directions
+                    </button>
+                )}
+                {isDirectionsVisible && (
+                    <button onClick={this.handleGoBack} className="back-button">
+                        Back
                     </button>
                 )}
             </div>
@@ -126,5 +157,6 @@ class CampusMap extends Component {
     }
 }
 
-
 export default withSessionHandling(CampusMap);
+
+
