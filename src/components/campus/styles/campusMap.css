@@ -1,0 +1,40 @@
+.campus-map-container {
+    display: flex;
+    height: 80vh;
+    margin-top: 50px;
+    border: black solid 3px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+}
+
+.sidebar-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.sidebar-item .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.map {
+    flex: 1; /* Map takes the remaining space */
+    height: 100%;
+}
