@@ -62,6 +62,11 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
   - Example: 
     - Issue: _"Fix button alignment on the settings page."_  
 
+- **refactor** 🔀
+  - Purpose: Applied to issues or pull requests that involve code refactoring, restructuring, or optimization.
+  - Example: 
+    - Issue: _"Refactor the user authentication logic to use a single function."_  
+
 - **wontfix** 🙈
   - Purpose: Applied to issues or pull requests that, after review, are determined not to be addressed or implemented.  
   - Example: 
