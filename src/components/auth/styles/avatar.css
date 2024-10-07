@@ -9,3 +9,29 @@
   top: 24px;
   right: 24px;
 }
+
+/* Media query for screens 800px or less */
+@media (max-width: 800px) {
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .layout-avatar {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+/* Media query for screens 515px or less */
+@media (max-width: 515px) {
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .layout-avatar {
+    top: 16px;
+    right: 16px;
+  }
+}

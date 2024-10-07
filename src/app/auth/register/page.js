@@ -1,4 +1,4 @@
-import Title from "@/components/title";
+import Title from "@/components/title/title";
 import { createUserModel } from "@/lib/mongodb/mongodb";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import Link from "next/link";

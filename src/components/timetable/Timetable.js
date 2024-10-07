@@ -23,6 +23,23 @@ export default function Timetable({ username }) {
   const [selectedInfo, setSelectedInfo] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState(null);
+  const [dayHeaderFormat, setDayHeaderFormat] = useState({ 
+    weekday: "short",
+    day: "numeric",
+   }); 
+   const [titleFormat, setTitleFormat] = useState({ year: "numeric", month: "long" });
+   const [slotLabelFormat, setSlotLabelFormat] = useState({
+    hour: "numeric",
+    minute: "2-digit",
+    omitZeroMinute: false,
+  });
+  const [eventTimeFormat, setEventTimeFormat] = useState({
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+  const [displayEventTime, setDisplayEventTime] = useState(true);
+
 
   /**
    * Fetches events for the specified user and sets them in state.
@@ -42,6 +59,46 @@ export default function Timetable({ username }) {
       fetchEvents();
     } else console.log("No username provided yet");
   }, [username]);
+
+  /**
+   * Adjusts day header format based on screen size
+   */
+  const adjustFormats = () => {
+    if (window.innerWidth <= 860) {
+      setDayHeaderFormat({ weekday: 'narrow', day: 'numeric' }); 
+      setTitleFormat({ year: "numeric", month: "short" });
+      setSlotLabelFormat({
+        hour: "numeric", 
+        omitZeroMinute: true, 
+        hour12: true 
+      });
+      setEventTimeFormat({});
+      setDisplayEventTime(false);
+    } else {
+      setDayHeaderFormat({ weekday: 'short', day: 'numeric' }); 
+      setTitleFormat({ year: "numeric", month: "long" });
+      setSlotLabelFormat({
+        hour: "numeric",
+        minute: "2-digit", 
+        omitZeroMinute: false, 
+        hour12: true 
+      });
+      setEventTimeFormat({
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+      });
+      setDisplayEventTime(true);
+    }
+  };
+
+  useEffect(() => {
+    adjustFormats(); 
+    window.addEventListener("resize", adjustFormats); 
+    return () => {
+      window.removeEventListener("resize", adjustFormats); 
+    };
+  }, []);
 
   /**
    * Handles date/time selection in the calendar.
@@ -112,11 +169,11 @@ export default function Timetable({ username }) {
         eventClick={handleEventClick}
         eventDrop={handleEventUpdate}
         eventResize={handleEventUpdate}
-        slotLabelFormat={{
-          hour: "numeric",
-          minute: "2-digit",
-          omitZeroMinute: false,
-        }}
+        dayHeaderFormat={dayHeaderFormat} 
+        slotLabelFormat={slotLabelFormat}
+        titleFormat={titleFormat}
+        eventTimeFormat={eventTimeFormat}
+        displayEventTime={displayEventTime}
         allDaySlot={false}
         height={700}
       />

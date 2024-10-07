@@ -1,6 +1,6 @@
 "use client";
 
-import Title from "@/components/title";
+import Title from "@/components/title/title";
 import TodoCreateButton from "@/components/Todo/TodoCreateButton";
 import TodoList from "@/components/Todo/TodoList";
 import { React, useEffect, useState } from "react";

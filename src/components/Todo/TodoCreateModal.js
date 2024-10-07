@@ -1,6 +1,5 @@
-import { React, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/TodoCreateModal.css";
-
 import PropTypes from "prop-types";
 
 export default function TodoCreateModal({ showing, onClose, onCreate }) {
@@ -12,6 +11,25 @@ export default function TodoCreateModal({ showing, onClose, onCreate }) {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [closeButtonText, setCloseButtonText] = useState("Close");
+
+  useEffect(() => {
+    const handleResize = () => {
+      // If the window is less than 800px wide, change the close button text to a close icon
+      if (window.innerWidth <= 800) {
+        setCloseButtonText("×");
+      } else {
+        setCloseButtonText("Close");
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Call once to set initial state
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const modalVisible = {
     visibility: showing ? "visible" : "hidden",
@@ -33,7 +51,7 @@ export default function TodoCreateModal({ showing, onClose, onCreate }) {
       <div className="title-bar">
         <h1>Create New Todo Item</h1>
         <button id="todo-create-modal-close-button" onClick={onClose}>
-          Close
+          {closeButtonText}
         </button>
       </div>
 

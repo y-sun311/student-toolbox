@@ -1,4 +1,4 @@
-import Title from "@/components/title";
+import Title from "@/components/title/title";
 import { createUserModel } from "@/lib/mongodb/mongodb";
 
 export default async function RegisterPage() {
