@@ -18,11 +18,29 @@
 .modal-content {
   background-color: var(--secondary-color);
   padding: 2em;
+  margin: 0 10% 0 10%;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   max-width: 500px;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 1em; /* Reduce padding */
+    margin: 0 5%; /* Decrease horizontal margin */
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
+  }
+
+  .modal-content h2 {
+    font-size: 1.2em; /* Decrease font size for header */
+  }
+
+  .modal-content input[type="text"] {
+    padding: 0.4em; /* Reduce padding in text input */
+    font-size: 0.9em; /* Decrease font size */
+  }
 }
 
 /* Header style within the modal content */
@@ -33,7 +51,7 @@
 
 /* Style for the text input within the modal */
 .modal-content input[type="text"] {
-  width: 100%;
+  width: 80%;
   padding: 0.5em;
   margin-bottom: 1em;
   border: 1px solid #ccc;
@@ -43,7 +61,7 @@
 
 /* Style for the color picker input within the modal */
 .modal-content input[type="color"] {
-  width: 518px;
+  width: 80%;
   height: 100px;
   padding: 0.5em;
   margin-bottom: 1em;
@@ -91,4 +109,28 @@
   /* Align buttons to the left; change to center or space-between as needed */
   gap: 10px;
   /* Add space between the buttons */
+}
+
+/* Adjust the width of the timetable for smaller screens */
+@media (max-width: 1920px) {
+  body {
+    margin: 0 max(calc(20% - 10vw), 10px) 0 max(calc(20% - 10vw), 10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    margin: 5% 35px 5% 35px;
+    font-size: 1.5rem;
+  }
+
+  .fc-toolbar-chunk {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 300px){
+  .fc-toolbar-chunk {
+    font-size: 10px;
+  }
 }

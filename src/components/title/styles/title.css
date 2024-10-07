@@ -10,7 +10,7 @@
   }
   
   /* Media query for screens 515px or less */
-  @media (max-width: 515px) {
+  @media (max-width: 600px) {
     .title {
       font-size: 1rem; 
     }
