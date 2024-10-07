@@ -7,9 +7,10 @@
 
 .sidebar {
     width: 250px;
-    background-color: #f0f0f0;
+    background-color: lightblue;
     padding: 20px;
     overflow-y: auto;
+    cursor:pointer;
 }
 
 .sidebar h2 {
@@ -18,23 +19,23 @@
 
 .sidebar-list {
     list-style-type: none;
-    padding: 0;
 }
 
-.sidebar-item {
+.sidebar-item, .category-item {
     display: flex;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: lightblue;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.sidebar-item .icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+.sidebar-item:hover, .category-item:hover {
+    background-color: white;
 }
 
 .map {
-    flex: 1; /* Map takes the remaining space */
+    flex: 1;
     height: 100%;
 }

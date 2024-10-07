@@ -1,32 +1,63 @@
-import { useState, useEffect } from "react";
+import React, { Component } from "react";
 import Sidebar from "./Sidebar";
 import "./styles/campusMap.css";
+import { useSession } from "next-auth/react";
 
-export default function CampusMap() {
-    const [mapInstance, setMapInstance] = useState(null);
-    const [selectedLocation, setSelectedLocation] = useState(null);
-    const [markerInstance, setMarkerInstance] = useState(null);
-    const [directionsRenderer, setDirectionsRenderer] = useState(null);
 
-    // Initialize the Google Map
-    useEffect(() => {
-        const script = document.createElement('script');
+function withSessionHandling(WrappedComponent) {
+    return function SessionHandler(props) {
+        const session = useSession();
+        return <WrappedComponent {...props} session={session} />;
+    };
+}
+
+/**
+ * CampusMap class component
+ */
+class CampusMap extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mapInstance: null,
+            selectedLocation: null,
+            markerInstance: null,
+            directionsRenderer: null,
+            username: null,
+        };
+    }
+
+    componentDidMount() {
+        const { session } = this.props;
+
+        // Get username from session
+        const username = session?.data?.user?.name;
+        if (username) {
+            this.setState({ username });
+        }
+
+        // Load the Google Maps API and initialize the map
+        const script = document.createElement("script");
         script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCFJwn49QS6TD-tv-EgR1HN9uP1eANTE9E&callback=initMap`;
         script.async = true;
         document.head.appendChild(script);
 
-        window.initMap = function () {
-            const map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: { lat: -36.8485, lng: 174.7633 },
-            });
-            setMapInstance(map); // Store the map instance
-        };
-    }, []);
+        window.initMap = this.initMap.bind(this);
+    }
 
+    // Initialize Google Map
+    initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: { lat: -36.8485, lng: 174.7633 },
+        });
 
-    const handleLocationSelect = (coords) => {
-        // Remove the previous marker if it exists
+        this.setState({ mapInstance: map });
+    }
+
+    // Handle location selection: zoom in and place marker
+    handleLocationSelect = (coords) => {
+        const { mapInstance, markerInstance } = this.state;
+
         if (markerInstance) {
             markerInstance.setMap(null);
         }
@@ -37,16 +68,16 @@ export default function CampusMap() {
             title: "Selected Location",
         });
 
-        // Zoom in to the selected location
         mapInstance.setCenter(coords);
         mapInstance.setZoom(17);
 
-        setSelectedLocation(coords);
-        setMarkerInstance(marker);
+        this.setState({ selectedLocation: coords, markerInstance: marker });
     };
 
-    // Function to get directions
-    const handleGetDirections = () => {
+    // Handle getting directions
+    handleGetDirections = () => {
+        const { selectedLocation, mapInstance } = this.state;
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 const currentLocation = {
@@ -58,20 +89,18 @@ export default function CampusMap() {
                 const directionsRenderer = new google.maps.DirectionsRenderer();
                 directionsRenderer.setMap(mapInstance); // Set the renderer on the map
 
-                // Create the route request
                 const request = {
                     origin: currentLocation,
                     destination: selectedLocation,
-                    travelMode: 'WALKING', // or DRIVING, BICYCLING, etc.
+                    travelMode: "WALKING",
                 };
 
-                // Request the directions
                 directionsService.route(request, (result, status) => {
                     if (status === google.maps.DirectionsStatus.OK) {
                         directionsRenderer.setDirections(result);
-                        setDirectionsRenderer(directionsRenderer); // Store the renderer for future use
+                        this.setState({ directionsRenderer });
                     } else {
-                        alert("Directions request failed due to " + status);
+                        alert("Directions failed" + status);
                     }
                 });
             });
@@ -80,16 +109,22 @@ export default function CampusMap() {
         }
     };
 
-    return (
-        <div className="campus-map-container">
-            <Sidebar setFocusLocation={handleLocationSelect} />
-            <div id="map" className="map"></div>
-            {selectedLocation && (
-                <button onClick={handleGetDirections} className="directions-button">
-                    Get Directions
-                </button>
-            )}
-        </div>
-    );
+    render() {
+        const { selectedLocation } = this.state;
+
+        return (
+            <div className="campus-map-container">
+                <Sidebar setFocusLocation={this.handleLocationSelect} />
+                <div id="map" className="map"></div>
+                {selectedLocation && (
+                    <button onClick={this.handleGetDirections} className="directions-button">
+                        Get Directions
+                    </button>
+                )}
+            </div>
+        );
+    }
 }
 
+
+export default withSessionHandling(CampusMap);
