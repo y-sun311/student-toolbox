@@ -1,12 +1,12 @@
 .campus-map-container {
     display: flex;
-    height: 80vh;
-    margin-top: 50px;
-    border: black solid 3px;
+    height: 70vh;
+    margin-top: 150px;
+    border: black solid 1px;
 }
 
 .sidebar {
-    width: 250px;
+    width: 30%;
     background-color: lightblue;
     padding: 20px;
     overflow-y: auto;
@@ -54,4 +54,30 @@
 
 .directions-button:hover, .back-button:hover {
     background-color: #0056b3;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+@media only screen and (min-width: 768px) {
+    .campus-map-container {
+        display: flex;
+        height: 50vh;
+        margin-top: 150px;
+        border: black solid 1px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .campus-map-container {
+        display: flex;
+        height: 70vh;
+        margin-top: 150px;
+        border: black solid 1px;
+    }
 }

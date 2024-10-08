@@ -46,8 +46,8 @@ class CampusMap extends Component {
     // Initialize the Google Map
     initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
-            center: { lat: -36.8485, lng: 174.7633 }, // Default map center
+            zoom: 17,
+            center: { lat: -36.8519173, lng: 174.7703293 }
         });
 
         this.setState({ mapInstance: map });
