@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 
-const MapModal = ({isVisible, onNavigate}) => {
+
+
+const MapModal = ({isVisible, onNavigate, onClose}) => {
     const [currentLocationInput, setCurrentLocationInput] = useState("");
     const [travelMode, setTravelMode] = useState("WALKING");
 
@@ -17,11 +19,15 @@ const MapModal = ({isVisible, onNavigate}) => {
         onNavigate(currentLocationInput, travelMode);
     };
 
+    const handleCloseClick = () => {
+        onClose(); // Call the onClose function passed as a prop
+    };
+
     if (!isVisible) return null;
 
     return (
         <div className="modal-in-map">
-             <div>
+            <div>
                 <PlacesAutocomplete
                     value={currentLocationInput}
                     onChange={handleSearchInputChange}
@@ -67,6 +73,11 @@ const MapModal = ({isVisible, onNavigate}) => {
                 <button onClick={handleNavigateClick} className="navigate-button">
                     Navigate
                 </button>
+            </div>
+            <div>
+            <button onClick={handleCloseClick} className="navigate-button">
+                Close
+            </button>
             </div>
         </div>
     );

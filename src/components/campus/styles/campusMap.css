@@ -17,7 +17,9 @@
 }
 
 .sidebar-list {
+    margin-top: 10px;
     list-style-type: none;
+    overflow: scroll;
 }
 
 .sidebar-item, .category-item {
@@ -47,23 +49,6 @@
     border: 1px solid #ccc;
 }
 
-@media only screen and (min-width: 768px) {
-    .campus-map-container {
-        display: flex;
-        height: 50vh;
-        margin-top: 150px;
-        border: black solid 1px;
-    }
-}
-
-@media only screen and (min-width: 1025px) {
-    .campus-map-container {
-        display: flex;
-        height: 70vh;
-        margin-top: 150px;
-        border: black solid 1px;
-    }
-}
 
 
 .modal-in-map {
@@ -74,7 +59,7 @@
     background: white;
     padding: 15px;
     border-radius: 5px;
-    width: 50%;
+    width: 60%;
     max-width: 500px;
     text-align: left;
     display: flex;
@@ -93,7 +78,7 @@
 }
 
 .navigate-button:hover {
-    scale: 110%;
+    scale: 105%;
 }
 
 .form {
@@ -111,6 +96,7 @@
     border-radius: 5px;
     cursor: pointer;
     width: 50%;
+    font-size: 12px;
 }
 
 
@@ -122,9 +108,42 @@
 
 .suggestion-item--active {
     background-color: #fafafa;
+    padding: 10px;
 }
 
 .suggestion-item:last-child {
     border-bottom: none;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .campus-map-container {
+        display: flex;
+        height: 50vh;
+        margin-top: 150px;
+        border: black solid 1px;
+    }
+
+    .modal-in-map {
+        display: block;
+        width: 80%;
+        max-width: 100%;
+    }
+
+    .modal-in-map input,
+    .modal-in-map select,
+    .modal-in-map button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .campus-map-container {
+        display: flex;
+        height: 70vh;
+        margin-top: 150px;
+        border: black solid 1px;
+    }
 }
 

@@ -21,9 +21,9 @@ class CampusMap extends Component {
             directionsRenderer: null,
             isDirectionsVisible: false,
             username: null,
-            isModalVisible: false, // Visibility state for modal
-            currentLocationInput: "", // Input for current location
-            travelMode: "WALKING", // Default travel mode
+            isModalVisible: false,
+            currentLocationInput: "",
+            travelMode: "WALKING",
         };
     }
 
@@ -106,30 +106,13 @@ class CampusMap extends Component {
         });
     };
 
-    handleClearRoute = () => {
-        const { directionsRenderer, mapInstance, markerInstance } = this.state;
-
-        if (directionsRenderer) {
-            directionsRenderer.setMap(null); // Clear the directions
-        }
-
-        if (markerInstance) {
-            markerInstance.setMap(null); // Clear the marker
-        }
-
-        // Reset state
-        this.setState({
-            directionsRenderer: null,
-            markerInstance: null,
-            isDirectionsVisible: false,
-            selectedLocation: null,
-        });
-
-        mapInstance.setZoom(15); // Reset zoom level
+    // Implement the handleCloseModal function
+    handleCloseModal = () => {
+        this.setState({ isModalVisible: false });
     };
 
     render() {
-        const { selectedLocation, isModalVisible, isDirectionsVisible } = this.state;
+        const { selectedLocation, isModalVisible } = this.state;
         return (
             <div className="campus-map-container">
                 <Sidebar setFocusLocation={this.handleLocationSelect} />
@@ -138,12 +121,8 @@ class CampusMap extends Component {
                         <MapModal
                             isVisible={isModalVisible}
                             onNavigate={this.handleRouteNavigation}
+                            onClose={this.handleCloseModal} // Pass the handleCloseModal function
                         />
-                    )}
-                    {isDirectionsVisible && (
-                        <button onClick={this.handleClearRoute} className="clear-route-button">
-                            Clear Route
-                        </button>
                     )}
                 </div>
             </div>
@@ -152,6 +131,7 @@ class CampusMap extends Component {
 }
 
 export default withSessionHandling(CampusMap);
+
 
 
 
