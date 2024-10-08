@@ -86,7 +86,10 @@ class CampusMap extends Component {
     handleGetDirections = () => {
         const { selectedLocation, mapInstance } = this.state;
 
-        if (navigator.geolocation) {
+        const userConsent = window.confirm("We need your location to provide directions. Do you allow this?");
+
+
+        if (userConsent) {
             navigator.geolocation.getCurrentPosition((position) => {
                 const currentLocation = {
                     lat: position.coords.latitude,
