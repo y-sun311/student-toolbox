@@ -144,18 +144,19 @@ class CampusMap extends Component {
 
         return (
             <div className="campus-map-container">
-                <Sidebar setFocusLocation={this.handleLocationSelect} />
-                <div id="map" className="map"></div>
-                {selectedLocation && !isDirectionsVisible && (
-                    <button onClick={this.handleGetDirections} className="directions-button">
-                        Get Directions
-                    </button>
-                )}
-                {isDirectionsVisible && (
-                    <button onClick={this.handleGoBack} className="back-button">
-                        Back
-                    </button>
-                )}
+                <Sidebar setFocusLocation={this.handleLocationSelect}/>
+                <div id="map" className="map">
+                    {selectedLocation && !isDirectionsVisible && (
+                        <button onClick={this.handleGetDirections} className="directions-button">
+                            Get Directions
+                        </button>
+                    )}
+                    {isDirectionsVisible && (
+                        <button onClick={this.handleGoBack} className="back-button">
+                            Back
+                        </button>
+                    )}
+                </div>
             </div>
         );
     }

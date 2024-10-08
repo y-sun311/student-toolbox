@@ -39,3 +39,19 @@
     flex: 1;
     height: 100%;
 }
+
+.directions-button, .back-button {
+    position: absolute;
+    bottom: 20px;
+    right: 60px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.directions-button:hover, .back-button:hover {
+    background-color: #0056b3;
+}
