@@ -1,6 +1,6 @@
 .campus-map-container {
     display: flex;
-    height: 70vh;
+    height: 80vh;
     margin-top: 150px;
     border: black solid 1px;
 }
@@ -39,22 +39,6 @@
     height: 100%;
 }
 
-.directions-button, .back-button {
-    position: absolute;
-    bottom: 20px;
-    right: 60px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.directions-button:hover, .back-button:hover {
-    background-color: #0056b3;
-}
-
 .search-input {
     width: 100%;
     padding: 8px;
@@ -80,3 +64,67 @@
         border: black solid 1px;
     }
 }
+
+
+.modal-in-map {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    width: 50%;
+    max-width: 500px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigate-button {
+    padding: 2px 5px;
+    background-color: lightblue;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.navigate-button:hover {
+    scale: 110%;
+}
+
+.form {
+    display: flex;
+}
+
+.autocomplete-dropdown {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+}
+
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item--active {
+    background-color: #fafafa;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+

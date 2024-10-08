@@ -13,7 +13,7 @@ export default async function Home() {
     },
       {
           title: "Campus Map",
-          icon: "/icons/calculator.png",
+          icon: "/icons/map.png",
           link: "/campus",
       },
   ];
