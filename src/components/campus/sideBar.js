@@ -8,8 +8,9 @@ export default function Sidebar({ setFocusLocation }) {
         ? placesData.filter(place => place.type === category)
         : [];
 
-    const handleKeyPress = (event, callback) => {
+    const handleKeyDown = (event, callback) => {
         if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
             callback();
         }
     };
@@ -22,6 +23,7 @@ export default function Sidebar({ setFocusLocation }) {
                     <div
                         className="category-item"
                         onClick={() => setCategory("Building")}
+                        onKeyDown={(e) => handleKeyDown(e, () => setCategory("Building"))}
                         tabIndex={0}
                         role="button"
                     >
@@ -30,6 +32,7 @@ export default function Sidebar({ setFocusLocation }) {
                     <div
                         className="category-item"
                         onClick={() => setCategory("Accommodation")}
+                        onKeyDown={(e) => handleKeyDown(e, () => setCategory("Accommodation"))}
                         tabIndex={0}
                         role="button"
                     >
@@ -46,6 +49,7 @@ export default function Sidebar({ setFocusLocation }) {
                                 key={index}
                                 className="sidebar-item"
                                 onClick={() => setFocusLocation(place.coords)}
+                                onKeyDown={(e) => handleKeyDown(e, () => setFocusLocation(place.coords))}
                                 tabIndex={0}
                                 role="button"
                             >
