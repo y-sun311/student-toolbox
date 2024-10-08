@@ -1,10 +1,16 @@
+#todo-bar { /* Header for the todo page*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 todo-create-button {
     padding: 10px 20px;
     font-size: 16px;
     transition: all 0.3s ease;
 }
 
-/* Media query for smaller screens */
+/* Media query for anything under 800px, the medium breakpoint  */
 @media (max-width: 800px) {
     .todo-create-button {
         padding: 5px 10px;

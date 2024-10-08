@@ -7,7 +7,7 @@ import { React, useEffect, useState } from "react";
 
 import TodoCreateModal from "@/components/Todo/TodoCreateModal";
 import { useSession } from "next-auth/react";
-import "./todo.css";
+import "@/components/Todo/styles/todoGeneral.css";
 
 export default function TodoPage() {
   const session = useSession();
