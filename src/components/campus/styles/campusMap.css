@@ -8,8 +8,7 @@
 .sidebar {
     width: 30%;
     background-color: lightblue;
-    padding: 20px;
-    overflow-y: auto;
+    padding: 10px;
     cursor:pointer;
 }
 
