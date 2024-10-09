@@ -14,6 +14,7 @@ export default function Index() {
     { title: "GPA Calculator", href: "/calculator" },
     { title: "To-Do List", href: "/todo" },
     { title: "Time Table Planner", href: "/timetable" },
+    { title: "Campus Map", href: "/campus" },
   ];
 
   return (
