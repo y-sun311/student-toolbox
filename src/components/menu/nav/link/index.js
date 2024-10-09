@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import "./headerLink.css";
+import "../../styles/menu.css";
 import PropTypes from "prop-types";
 
 export default function Link({ data }) {

@@ -57,7 +57,7 @@ textarea {
     gap: 10px;
 }
 
-/* Media query for smaller screens */
+/* Media query for 800px or less the medium break point */
 @media (max-width: 800px) {
     #todo-create-modal {
         width: 90%;
@@ -97,10 +97,10 @@ textarea {
         justify-content: center;
     }
  }
-/* Media query for screens 515px or less */
+/* Media query for screens 515px or less, the small breakpoint */
 @media (max-width: 515px) {
     .title-bar h1 {
-    font-size: 1.2rem; /* Adjust font size for smaller screens */
+    font-size: 1.2rem; 
     }   
 }
 

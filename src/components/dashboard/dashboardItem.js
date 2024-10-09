@@ -1,4 +1,4 @@
-import './styles/dashboardItem.css';
+import './styles/dashboard.css';
 
 export default function DashboardItem({ title, icon, link }) {
   return (

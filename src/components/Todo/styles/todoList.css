@@ -3,3 +3,33 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.todo-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+    background-color: white;
+    border-radius: 5px;
+
+    font-weight: 500;
+
+    overflow: hidden; /* Ensure the content does not overflow */
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    flex-grow: 1;
+}
+
+.todo-list-item-complete {
+    text-decoration: line-through;
+}
+
+/* Media query for everything below 800px, the medium break point */
+@media (max-width: 800px) {
+    .todo-list-item {
+        align-items: center;
+        width: 90%;
+        padding: 1rem;
+    }
+}

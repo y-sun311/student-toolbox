@@ -3,7 +3,7 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Nav from "./nav/index";
-import "./header.css";
+import "./styles/menu.css";
 
 export default function Index() {
   const [isActive, setIsActive] = useState(false);

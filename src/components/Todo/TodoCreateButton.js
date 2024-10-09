@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './styles/TodoCreateButton.css';
+import './styles/todoGeneral.css';
 
 export default function TodoCreateButton({ onOpen }) {
     const [buttonText, setButtonText] = useState('New Todo Item +');
