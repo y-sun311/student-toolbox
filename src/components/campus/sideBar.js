@@ -42,7 +42,7 @@ export default function Sidebar({ setFocusLocation }) {
             )}
             {category && (
                 <>
-                    <button onClick={() => setCategory(null)}>Back to Categories</button>
+                    <button onClick={() => setCategory(null)} className="back-button">Back to Categories</button>
                     <div className="sidebar-list">
                         {filteredData.map((place, index) => (
                             <div
