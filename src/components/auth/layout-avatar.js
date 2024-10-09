@@ -1,13 +1,14 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import Avatar from "./avatar";
 import "./styles/avatar.css";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function LayoutAvatar() {
-  const session = useSession();
+  const { data: session } = useSession();
   const [avatarSize, setAvatarSize] = useState(48);
+  const [customImage, setCustomImage] = useState(null); 
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,18 +22,28 @@ export default function LayoutAvatar() {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Call once to set initial state
+    handleResize(); 
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  if (!session?.data?.user?.name) return null;
+  if (!session?.user?.name) return null;
+
+  const handleImageChange = (file) => {
+    const imageUrl = URL.createObjectURL(file);
+    setCustomImage(imageUrl);
+  };
 
   return (
     <div className="layout-avatar">
-      <Avatar size={avatarSize} username={session.data.user.name} />
+      <Avatar
+        size={avatarSize}
+        username={session.user.name}
+        imageUrl={customImage || session.user.image} 
+        onImageChange={handleImageChange} 
+      />
     </div>
   );
 }
