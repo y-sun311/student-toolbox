@@ -1,6 +1,9 @@
-# 📚 Student Toolbox 🧰
+<div style="text-align: center;">
+  <img src="public/logo.svg" width="200" alt="Student Toolbox Logo" />
+  <h1>✏️ Student Toolbox 📖</h1>
+  <h3> v1.21.0</h3>
+</div>
 
-## v1.20.4
 
 Student Toolbox is a web application designed to make student life easier by organizing their schedule, calculating their grades, and managing the tasks that they need to complete.
 
@@ -126,6 +129,12 @@ Version control: [Git](https://git-scm.com/)
 - [Ming Huang](https://github.com/minghan36)
 - [Troy Mackenzie-Smee](https://github.com/tmacsmee)
 - [Venxia Niu](https://github.com/vniu740)
+- [Hayley Smith](https://github.com/hayley9080)
+- [James Sun](https://github.com/y-sun311)
+- [Jessica Fenwick](https://github.com/jessicafenwick)
+- [Reece Talopau](https://github.com/rtal831)
+- [Rikki Noble](https://github.com/rnob843)
+- [Ronak Patel](https://github.com/Ronak1605)
 
 ## License
 

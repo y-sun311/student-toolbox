@@ -3,6 +3,7 @@ import { createUserModel } from "@/lib/mongodb/mongodb";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import Logo from "@/components/logo/logo";
 import "../auth.css";
 
 export default async function RegisterPage() {
@@ -30,6 +31,7 @@ export default async function RegisterPage() {
 
   return (
     <main className="auth">
+      <Logo />
       <Title text="Register" />
       <form action={registerUser} className="auth__form">
         <div>

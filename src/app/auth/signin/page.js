@@ -1,10 +1,12 @@
 "use client";
 
 import Title from "@/components/title/title";
+import Logo from "@/components/logo/logo";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRef } from "react";
 import "../auth.css";
+
 
 export default function SignInPage() {
   const username = useRef("");
@@ -22,6 +24,7 @@ export default function SignInPage() {
 
   return (
     <main className="auth">
+      <Logo />
       <Title text="Sign In" />
       <form onSubmit={handleSubmit} className="auth__form">
         <div>
