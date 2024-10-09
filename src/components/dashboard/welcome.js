@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 
-import "./styles/welcome.css";
+import "./styles/dashboard.css";
 import Title from "../title/title";
 
 export default function Welcome() {

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import { menuSlide } from "../anim";
 import Link from "./link/index";
-import "./headerNav.css";
+import "../styles/menu.css";
 
 export default function Index() {
   const session = useSession();
