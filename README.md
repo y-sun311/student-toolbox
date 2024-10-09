@@ -112,6 +112,8 @@ Please read the [contributor guidelines](https://github.com/Snacc-Overflow/stude
 ## Helpful documentation
 
 - [Full calender](https://fullcalendar.io/) (Official documentation of the calender component used in the time table page)
+- [Google map api](https://mapsplatform.google.com/) For the campus map functionality to work correctly, add NEXT_PUBLIC_GOOGLE_MAPS_API_KEY to .env file.
+  And ensure that 'Routing', 'Places API' and 'Google Maps JavaScript API' are enabled.
 
 ## Versioning
 
