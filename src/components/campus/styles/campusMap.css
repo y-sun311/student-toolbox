@@ -1,0 +1,149 @@
+.campus-map-container {
+    display: flex;
+    height: 80vh;
+    margin-top: 150px;
+    border: black solid 1px;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: lightblue;
+    padding: 10px;
+    cursor:pointer;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+}
+
+.sidebar-list {
+    margin-top: 10px;
+    list-style-type: none;
+    overflow: scroll;
+}
+
+.sidebar-item, .category-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: lightblue;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover, .category-item:hover {
+    background-color: white;
+}
+
+.map {
+    flex: 1;
+    height: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
+.modal-in-map {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    width: 60%;
+    max-width: 500px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigate-button {
+    padding: 2px 5px;
+    background-color: lightblue;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.navigate-button:hover {
+    scale: 105%;
+}
+
+.form {
+    display: flex;
+}
+
+.autocomplete-dropdown {
+    position: absolute;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+    font-size: 12px;
+}
+
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item--active {
+    background-color: #fafafa;
+    padding: 10px;
+}
+
+.suggestion-item:last-child {
+    border-bottom: none;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .campus-map-container {
+        display: flex;
+        height: 50vh;
+        margin-top: 150px;
+        border: black solid 1px;
+    }
+
+    .modal-in-map {
+        display: block;
+        width: 80%;
+        max-width: 100%;
+    }
+
+    .modal-in-map input,
+    .modal-in-map select,
+    .modal-in-map button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .campus-map-container {
+        display: flex;
+        height: 70vh;
+        margin-top: 150px;
+        border: black solid 1px;
+    }
+}
+
